@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.yp_museum.Dao.MuseumDao">
+    <resultMap id="museum" type="com.example.yp_museum.Entity.Museum">
+        <result column="NAME_OF_INSTITUTION" jdbcType="VARCHAR" property="museumName"/>
+        <result column="ALTERNATIVE_NAME_OF_INSTITUTION" jdbcType="VARCHAR" property="altMuseumName"/>
+        <result column="PHONE" jdbcType="BIGINT" property="museumPhone" />
+        <result column="WEB_URL" jdbcType="VARCHAR" property="museumURL"/>
+        <result column="MUSEUM_TYPE" jdbcType="VARCHAR" property="museumType"/>
+        <result column="ADDRESS" jdbcType="VARCHAR" property="museumAddress" />
+        <result column="CITY" jdbcType="VARCHAR" property="museumCity"/>
+        <result column="STATE" jdbcType="VARCHAR" property="museumState"/>
+        <result column="ZIP_CODE" jdbcType="VARCHAR" property="museumZip" />
+
+    </resultMap>
+    <sql id="all_fields">
+        NAME_OF_INSTITUTION,ALTERNATIVE_NAME_OF_INSTITUTION,PHONE,WEB_URL,MUSEUM_TYPE,ADDRESS,CITY,STATE,ZIP_CODE
+    </sql>
+    <select id="getMuseumListByState" parameterType="string" resultMap="museum">
+        select
+        <include refid="all_fields"/>
+        from t_museums
+        where lower(STATE,'en_US')=lower(#{state},'en_US')
+    </select>
+    <select id="getMuseumListByAddress" parameterType="string" resultMap="museum">
+        select
+        <include refid="all_fields"/>
+        from t_museums
+        where lower(ADDRESS,'en_US')=lower(#{address},'en_US')
+    </select>
+    <select id="getMuseumListByCity" parameterType="string" resultMap="museum">
+        select
+        <include refid="all_fields"/>
+        from t_museums
+        where lower(CITY,'en_US')=lower(#{city},'en_US')
+    </select>
+    <select id="getMuseumListByName" parameterType="string" resultMap="museum">
+        select
+        <include refid="all_fields"/>
+        from t_museums
+        where NAME_OF_INSTITUTION like CONCAT(CONCAT('%', #{museumName,jdbcType=VARCHAR}) ,'%')
+    </select>
+    <select id="getMuseumListByMultipleConditions" resultMap="museum">
+        select NAME_OF_INSTITUTION, ALTERNATIVE_NAME_OF_INSTITUTION, PHONE, WEB_URL,MUSEUM_TYPE, ADDRESS, CITY, STATE,ZIP_CODE
+        from t_museums
+        where 1=1 and
+        <if test="name != ''">
+            NAME_OF_INSTITUTION like CONCAT(CONCAT('%',#{name}),'%')
+            and
+        </if>
+        <if test="state!= ''">
+            lower(STATE,'en_US')=lower(#{state},'en_US') and
+        </if>
+        <if test="address!=''">
+            lower(ADDRESS,'en_US')=lower(#{address},'en_US') and
+        </if>
+        <if test="city!=''">
+            lower(CITY,'en_US')=lower(#{city},'en_US') and
+        </if>
+        1=1
+    </select>
+</mapper>

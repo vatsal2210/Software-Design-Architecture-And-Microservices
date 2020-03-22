@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.yp_restaurant.Dao.RestaurantDao">
+    <resultMap id="restaurant" type="com.example.yp_restaurant.Entity.Restaurant">
+        <result column="ADDRESS" jdbcType="VARCHAR" property="address"/>
+        <result column="CATEGORIES" jdbcType="VARCHAR" property="type"/>
+        <result column="CITY" jdbcType="VARCHAR" property="city" />
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="POSTALCODE" jdbcType="VARCHAR" property="postalCode"/>
+        <result column="PROVINCE" jdbcType="VARCHAR" property="state" />
+    </resultMap>
+    <sql id="all_fields">
+        ADDRESS,CATEGORIES,CITY,NAME,POSTALCODE,PROVINCE
+    </sql>
+    <select id="getRestaurantListByState" parameterType="string" resultMap="restaurant">
+        select
+        <include refid="all_fields"/>
+        from t_restaurant
+        where lower(PROVINCE,'en_US')=lower(#{state},'en_US')
+    </select>
+    <select id="getRestaurantListByAddress" parameterType="string" resultMap="restaurant">
+        select
+        <include refid="all_fields"/>
+        from t_restaurant
+        where lower(ADDRESS,'en_US')=lower(#{address},'en_US')
+    </select>
+    <select id="getRestaurantListByCity" parameterType="string" resultMap="restaurant">
+        select
+        <include refid="all_fields"/>
+        from t_restaurant
+        where lower(CITY,'en_US')=lower(#{city},'en_US')
+    </select>
+    <select id="getRestaurantListByName" parameterType="string" resultMap="restaurant">
+        select
+        <include refid="all_fields"/>
+        from t_restaurant
+        where NAME like CONCAT(CONCAT('%', #{name,jdbcType=VARCHAR}) ,'%')
+    </select>
+    <select id="getRestaurantListByType" parameterType="string" resultMap="restaurant">
+        select
+        <include refid="all_fields"/>
+        from t_restaurant
+        where lower(TYPE,'en_US')=lower(#{type},'en_US')
+    </select>
+    <select id="getRestaurantListByMultipleConditions" resultMap="restaurant">
+        select
+        <include refid="all_fields"/>
+        from t_restaurants
+        where 1=1 and <if test="name != ''">
+        NAME like CONCAT(CONCAT('%',#{name}),'%')
+        and
+    </if>
+        <if test="state!=''">
+            lower(PROVINCE,'en_US')=lower(#{state},'en_US') and
+        </if>
+        <if test="address!=''">
+            lower(ADDRESS,'en_US')=lower(#{address},'en_US')and
+        </if>
+        <if test="city!=''">
+            lower(CITY,'en_US')=lower(#{city},'en_US') and
+        </if>
+        <if test="type!=''">
+            lower(CATEGORIES,'en_US')=lower(#{type},'en_US') and
+        </if>
+        1=1
+    </select>
+</mapper>

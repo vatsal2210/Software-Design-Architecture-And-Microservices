@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.yp_skiresort.Dao.SkiResortDao">
+    <resultMap id="skiResort" type="com.example.yp_skiresort.Entity.SkiResort">
+        <result column="resort_name" jdbcType="VARCHAR" property="resortName"/>
+        <result column="continent" jdbcType="VARCHAR" property="continent"/>
+        <result column="country" jdbcType="VARCHAR" property="country" />
+        <result column="province" jdbcType="VARCHAR" property="province"/>
+        <result column="altitude" jdbcType="INTEGER" property="altitude"/>
+        <result column="beginner_slope_distance" jdbcType="INTEGER" property="beginnerSlopeDistance" />
+        <result column="intermediate_slope_distance" jdbcType="INTEGER" property="intermediateSlopeDistance"/>
+        <result column="difficult_slope_distance" jdbcType="INTEGER" property="difficultSlopeDistance"/>
+        <result column="adult_ticket_price" jdbcType="INTEGER" property="adultTicketPrice" />
+        <result column="youth_ticket_price" jdbcType="INTEGER" property="youthTicketPrice" />
+        <result column="child_ticket_price" jdbcType="INTEGER" property="childTicketPrice" />
+        <result column="currency" jdbcType="VARCHAR" property="currency" />
+        <result column="slope_rating" jdbcType="FLOAT" property="slopeRating" />
+        <result column="tbar" jdbcType="INTEGER" property="Tbar"/>
+        <result column="circulating_ropeway" jdbcType="INTEGER" property="circulatingRopeway"/>
+        <result column="chair_lift" jdbcType="INTEGER" property="chairLift" />
+        <result column="snow_reliability" jdbcType="VARCHAR" property="snowReliability"/>
+    </resultMap>
+    <sql id="all_fields">
+        resort_name,continent,country,province,altitude,beginner_slope_distance,intermediate_slope_distance,difficult_slope_distance,adult_ticket_price,youth_ticket_price,child_ticket_price,currency,slope_rating,tbar,circulating_ropeway,chair_lift,snow_reliability
+    </sql>
+    <select id="getSkiResortListByCountry" parameterType="string" resultMap="skiResort">
+        select
+        <include refid="all_fields"/>
+        from t_skiresort
+        where lower(country,'en_US')=lower(#{country},'en_US')
+    </select>
+    <select id="getResortListByPriceRange" resultMap="skiResort">
+        select
+        <include refid="all_fields"/>
+        from t_skiresort
+        where adult_ticket_price>#{min} and adult_ticket_price &lt; #{max}
+    </select>
+    <select id="getResortListBySlopeRating" parameterType="float" resultMap="skiResort">
+        select
+        <include refid="all_fields"/>
+        from t_skiresort
+        where slope_rating > #{rating,jdbcType=DOUBLE}
+    </select>
+    <select id="getResortListByPartialName" parameterType="string" resultMap="skiResort">
+        select
+        <include refid="all_fields"/>
+        from t_skiresort
+          where resort_name like CONCAT(CONCAT('%', #{name,jdbcType=VARCHAR}) ,'%')
+
+    </select>
+    <select id="getResortListByMultipleConditions" resultMap="skiResort">
+        select
+        <include refid="all_fields"/>
+        from t_skiresort
+        where 1=1 and <if test="name != ''">
+                resort_name like CONCAT(CONCAT('%',#{name}),'%')
+              and
+              </if>
+              <if test="min!= -1">
+                adult_ticket_price &gt;#{min} and
+              </if>
+              <if test="max!=-1">
+                adult_ticket_price &lt;#{max} and
+              </if>
+              <if test="rating!=''">
+              slope_rating &gt;=#{rating} and
+              </if>
+              <if test="country!=''">
+              lower(country,'en_US') = lower(#{country},'en_US') and
+              </if>
+              1=1
+    </select>
+</mapper>

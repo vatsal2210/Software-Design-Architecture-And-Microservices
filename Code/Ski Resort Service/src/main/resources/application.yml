@@ -1,0 +1,32 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://ypserver.mybluemix.net/eureka
+  instance:
+    hostname: localhost
+    lease-expiration-duration-in-seconds: 3
+    lease-renewal-interval-in-seconds: 1
+    metadataMap:
+      instanceId: yp_skiresort
+
+spring:
+  application:
+    name: yp_skiresort
+  datasource:
+    url: jdbc:db2://dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net:50000/BLUDB
+    username: pqw40220
+    password: dl5wz-5dbkjz8xrm
+    driver-class-name: com.ibm.db2.jcc.DB2Driver
+
+server:
+  port: 8765
+
+mybatis:
+  mapper-locations: classpath:mapper.xml
+
+---
+spring:
+  profiles: cloud
+eureka:
+  instance:
+    nonSecurePort: 80

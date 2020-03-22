@@ -1,0 +1,1392 @@
+{
+	"info": {
+		"_postman_id": "a17ed126-ae9a-4090-8a1a-4dfe71bc5968",
+		"name": "Western - SA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\":\"vatsal\",\n\t\"lastName\": \"shah\",\n\t\"email\": \"vatsalshah2210@gmail.com\",\n\t\"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "https://wesetern01-auth.mybluemix.net/user/signup",
+							"protocol": "https",
+							"host": [
+								"wesetern01-auth",
+								"mybluemix",
+								"net"
+							],
+							"path": [
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"vatsalshah2210@gmail.com\",\n\t\"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "https://wesetern01-auth.mybluemix.net/user/signin",
+							"protocol": "https",
+							"host": [
+								"wesetern01-auth",
+								"mybluemix",
+								"net"
+							],
+							"path": [
+								"user",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify a user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhdHNhbHNoYWgyMjEwQGdtYWlsLmNvbSIsInVzZXJJZCI6IjVjODllODA0MTdhYmNjMjRmNDA3NGI5ZSIsImlhdCI6MTU1MjU0MjMzNSwiZXhwIjoxNTUzMTQ3MTM1fQ.VP-Kgrn-myu-K6ze0L6L7HgFZaWViyqdp9d0u_3qfzU\"\n}"
+						},
+						"url": {
+							"raw": "https://wesetern01-auth.mybluemix.net/user/verify",
+							"protocol": "https",
+							"host": [
+								"wesetern01-auth",
+								"mybluemix",
+								"net"
+							],
+							"path": [
+								"user",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ID: S1 Ski Resort Service",
+			"item": [
+				{
+					"name": "search ski resorts with empty input",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/ski/resort/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"ski",
+								"resort",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search ski resorts in the specified country",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fa036dee-a2f7-44b4-ad22-cb25d5254acd",
+								"exec": [
+									"// \"query\": \"country=xxx&price=1-100&sloperating=2&resortname=xxxx\""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\": \"country=canada\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/ski/resort/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"ski",
+								"resort",
+								"search"
+							]
+						},
+						"description": "Ski resport"
+					},
+					"response": []
+				},
+				{
+					"name": "search ski resort whose name contains the specified words",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"resortname=cold\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/ski/resort/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"ski",
+								"resort",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search ski resorts in the specified price range",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"query\":\"pricerange=50-100\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/ski/resort/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"ski",
+								"resort",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search ski resorts in the specified price range(no minimum)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"pricerange=-100\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/ski/resort/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"ski",
+								"resort",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search ski resorts in specified price range(no maximum)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"pricerange=30-\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/ski/resort/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"ski",
+								"resort",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search ski resorts whose rating falls in the specified range",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"sloperating=3\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/ski/resort/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"ski",
+								"resort",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search ski resorts by the combination of slope rating&country&resort name",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"sloperating=1&country=canada&resortname=blue\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/ski/resort/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"ski",
+								"resort",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search ski resorts by the combination of country and price range",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"country=canada&pricerange=50-100\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/ski/resort/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"ski",
+								"resort",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search ski resorts by the combination of country&slope rating&price range",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"country=canada&pricerange=50-100&sloperating=1\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/ski/resort/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"ski",
+								"resort",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search ski resorts by the combination of all conditions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"country=canada&pricerange=50-100&sloperating=1&resortname=ski\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/ski/resort/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"ski",
+								"resort",
+								"search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ID: S2 Restaurants service",
+			"item": [
+				{
+					"name": "search restaurants with an empty query",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fa036dee-a2f7-44b4-ad22-cb25d5254acd",
+								"exec": [
+									"// \"query\": \"country=xxx&price=1-100&sloperating=2&resortname=xxxx\""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/rest/restaurant/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"rest",
+								"restaurant",
+								"search"
+							]
+						},
+						"description": "Ski resport"
+					},
+					"response": []
+				},
+				{
+					"name": "search restaurants in the specified state",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"state=WI\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/rest/restaurant/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"rest",
+								"restaurant",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search restaurants of the specified type",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"type=Fast Food Restaurant\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/rest/restaurant/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"rest",
+								"restaurant",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search restaurants with the specified partial name",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"name=Boston\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/rest/restaurant/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"rest",
+								"restaurant",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search restaurant in the specified address",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"address=2860 E Paris Ave SE\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/rest/restaurant/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"rest",
+								"restaurant",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search restaurants with the combination of all conditions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"type=Fast Food Restaurant&state=MI&city=detroit&address=9768 Grand River Ave&name=Wendy's\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/rest/restaurant/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"rest",
+								"restaurant",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search restaurants with the combination of partial name & state & city",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"type=Fast Food Restaurant&state=MI&city=detroit&name=Wendy's\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/rest/restaurant/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"rest",
+								"restaurant",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search restaurants with the combination of state & city & address",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"state=MI&city=detroit&address=9768 Grand River Ave\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/rest/restaurant/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"rest",
+								"restaurant",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search restaurants with the combination of state & city & type",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"state=MI&city=detroit&type=Fast Food Restaurant\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/rest/restaurant/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"rest",
+								"restaurant",
+								"search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ID: S3 Museum service",
+			"item": [
+				{
+					"name": "search museum with empty query",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fa036dee-a2f7-44b4-ad22-cb25d5254acd",
+								"exec": [
+									"// \"query\": \"country=xxx&price=1-100&sloperating=2&resortname=xxxx\""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\": \"\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/museum/museum/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"museum",
+								"museum",
+								"search"
+							]
+						},
+						"description": "Ski resport"
+					},
+					"response": []
+				},
+				{
+					"name": "search museums in specified state",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"state=AZ\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/museum/museum/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"museum",
+								"museum",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search museums whose name contains the specified word",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"name=PIONEER HISTORICAL SOCIETY INC\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/museum/museum/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"museum",
+								"museum",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search museums in specified city",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\":\"city=FARMINGTON\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/museum/museum/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"museum",
+								"museum",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search museums in the specified address",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"address=PO BOX 132\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/museum/museum/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"museum",
+								"museum",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search museums by the combination of all conditions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"address=PO BOX 132&&city=FARMINGTON&state=IA&name=PIONEER HISTORICAL SOCIETY INC\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/museum/museum/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"museum",
+								"museum",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search museums by the combination of state, city and address",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"address=PO BOX 132&&city=FARMINGTON&state=IA\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/museum/museum/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"museum",
+								"museum",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search museums by the combination of name,",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\":\"city=FARMINGTON&state=IA&name=PIONEER HISTORICAL SOCIETY INC\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/museum/museum/search",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"museum",
+								"museum",
+								"search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ID: S4 - Software companies",
+			"item": [
+				{
+					"name": "Search companies \bin the specified city",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\":\"city=san francisco\"\n}"
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/company/company/search?query=city=san francisco",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"company",
+								"company",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "city=san francisco"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search companies in the specified state",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/company/company/search?query=state=california",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"company",
+								"company",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "state=california"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search companies which were founded in the specified year",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/company/company/search?query=founded=2013",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"company",
+								"company",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "founded=2013"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search companies by the combination of state and city",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/company/company/search?query=state=California%26city=San Francisco",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"company",
+								"company",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "state=California&city=San Francisco"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search companies by the combination of both founded time and city",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/company/company/search?query=city=san francisco%26founded=2013",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"company",
+								"company",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "city=san francisco&founded=2013"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search companies by the combination of all conditions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net:443/company/company/search?query=state=California%26city=san francisco%26founded=2014",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"port": "443",
+							"path": [
+								"company",
+								"company",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "state=California&city=san francisco&founded=2014"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ID: S6 Service Registry & Discovery",
+			"item": [
+				{
+					"name": "Service Registry",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://ypgateway.mybluemix.net/getMicroServicesList",
+							"protocol": "https",
+							"host": [
+								"ypgateway",
+								"mybluemix",
+								"net"
+							],
+							"path": [
+								"getMicroServicesList"
+							]
+						},
+						"description": "Get microservice list\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ID: S7 Gateway",
+			"item": [
+				{
+					"name": "Microservices List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhdHNhbHNoYWgyMjEwQGdtYWlsLmNvbSIsInVzZXJJZCI6IjVjODllODA0MTdhYmNjMjRmNDA3NGI5ZSIsImlhdCI6MTU1MjU0MjMzNSwiZXhwIjoxNTUzMTQ3MTM1fQ.VP-Kgrn-myu-K6ze0L6L7HgFZaWViyqdp9d0u_3qfzU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://western01-gateway-pipeline.mybluemix.net/service/list",
+							"protocol": "http",
+							"host": [
+								"western01-gateway-pipeline",
+								"mybluemix",
+								"net"
+							],
+							"path": [
+								"service",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
