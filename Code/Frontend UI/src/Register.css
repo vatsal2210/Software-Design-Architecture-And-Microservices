@@ -1,0 +1,49 @@
+.register-row {
+    display: flex;
+    padding-bottom: 10px;
+    width: 40%;
+    margin: 0 auto;
+    padding-right: 50px;
+}
+
+.register-label {
+    flex: 20%;
+    text-align: right;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 20px;
+}
+
+.register-input {
+    flex: 60%;
+}
+
+.register-invalid {
+    position: relative;
+    color: red;
+    font-size: 11px;
+    margin-bottom: 2px;
+    margin-top: 0px;
+    margin-left: -55px;
+    text-align: center;
+}
+
+.register-invalid-password {
+    position: relative;
+    color: red;
+    font-size: 11px;
+    padding-left: 70px;
+    margin-bottom: 2px;
+    margin-top: 0px;
+    text-align: center;
+}
+
+.register-invalid-confirm {
+    position: relative;
+    color: red;
+    font-size: 11px;
+    padding-left: 5px;
+    margin-bottom: 2px;
+    margin-top: 0px;
+    text-align: center;
+}
