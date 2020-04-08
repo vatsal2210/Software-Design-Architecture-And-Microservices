@@ -124,3 +124,15 @@ Glossary and Acronym List
 -	UI: User Interface, the medium which the user interacts with the application
 -	URL: Uniform Resource Locator, colloquially termed a web address, is a reference to a web resource
 
+## Author
+
+**Vatsal Shah**
+
+[**PORTFOLIO**](https://vatsalshah.in)
+
+[**GITHUB**](https://github.com/vatsal2210)
+
+[**BLOG**](https://medium.com/@vatsalshah2210)
+
+ <a href="https://www.buymeacoffee.com/vatsalshah" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
+
