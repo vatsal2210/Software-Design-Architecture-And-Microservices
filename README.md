@@ -134,5 +134,5 @@ Glossary and Acronym List
 
 [**BLOG**](https://medium.com/@vatsalshah2210)
 
- <a href="https://www.buymeacoffee.com/vatsalshah" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
+<a href="https://www.buymeacoffee.com/vatsalshah" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 180px !important;" ></a>
 
