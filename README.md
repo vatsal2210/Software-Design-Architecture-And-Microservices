@@ -124,15 +124,13 @@ Glossary and Acronym List
 -	UI: User Interface, the medium which the user interacts with the application
 -	URL: Uniform Resource Locator, colloquially termed a web address, is a reference to a web resource
 
+<hr/>
+
 ## Author
 
 **Vatsal Shah**
 
-[**PORTFOLIO**](https://vatsalshah.in)
-
-[**GITHUB**](https://github.com/vatsal2210)
-
-[**BLOG**](https://medium.com/@vatsalshah2210)
+[**PORTFOLIO**](https://vatsalshah.in) | [**GITHUB**](https://github.com/vatsal2210) | [**BLOG**](https://vatsalshah.in/blog)
 
 If you like my stuff and hate spam, I can send my upcoming articles to your inbox. One-click unsubscribe anytime — [**Click here to join my newsletter**](https://vatsalshah.substack.com/subscribe) 💌
 
