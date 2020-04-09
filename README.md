@@ -134,5 +134,6 @@ Glossary and Acronym List
 
 [**BLOG**](https://medium.com/@vatsalshah2210)
 
-<a href="https://www.buymeacoffee.com/vatsalshah" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 180px !important;" ></a>
+In case you miss out, I can send my upcoming articles to your inbox. If you like my stuff and hate spam. One-click unsubscribe anytime — [**Click here to join my newsletter**](https://vatsalshah.substack.com/subscribe) 💌
 
+If you’re feeling generous today, you can [**buy me a coffee**](https://www.buymeacoffee.com/vatsalshah) ☕
